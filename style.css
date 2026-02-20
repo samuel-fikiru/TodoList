@@ -9,7 +9,9 @@ body {
 
   margin-bottom: 500px;
 }
-
+.completed-todo{
+  text-decoration: line-through;
+}
 .task-input-container{
   display: flex;
   justify-content: center;
