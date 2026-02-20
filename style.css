@@ -6,6 +6,8 @@ body {
   align-items: center;
   font-family: "lato", "mulish", sans-serif;
   font-weight: 600;
+
+  margin-bottom: 500px;
 }
 
 .task-input-container{
