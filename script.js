@@ -8,8 +8,9 @@ let todoLists = [
   "Pay bills",
   "Clean the room",
 ];
-
+const todoNameList = document.querySelectorAll(".js-todo-name");
 const addButton = document.querySelector(".add-task-btn");
+
 addButton.addEventListener("click", () => {
   const todoName = document.querySelector(".js-task-input");
   todoLists.push(todoName.value);
@@ -62,11 +63,10 @@ function displayHtml() {
 }
 
 let newList = [];
-const todoNameList = document.querySelectorAll(".js-todo-name");
 
 todoNameList.forEach((name) => {
   name.addEventListener("click", () => {
-    newList = [];  
+    newList = [];
     objectList.forEach((obj) => {
       const tempdiv = document.createElement("div");
       tempdiv.innerHTML = obj.index;
@@ -80,15 +80,14 @@ todoNameList.forEach((name) => {
 
       const objformat = {
         index: tempdiv.innerHTML,
-        name: name.innerText
+        name: name.innerText,
       };
       newList.push(objformat);
     });
     objectList = newList;
-    todoHTMLfinal = '';
+    todoHTMLfinal = "";
     displayHtml();
 
     console.log(newList);
   });
-
 });
