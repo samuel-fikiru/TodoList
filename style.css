@@ -4,6 +4,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "lato", "mulish", sans-serif;
+  font-weight: 600;
 }
 
 .task-input-container{
@@ -22,13 +24,16 @@ body {
   border-radius: 5px;
   width: 180px;
   margin-right: 10px;
-  border-color: rgb(210, 210, 210);
+  border-color: rgb(216, 216, 216);
   border-style: solid;
   border-width: 1px;
-  font-size: 15px;
+  font-size: 14px;
+  
+  font-family: "lato", "mulish", sans-serif;
+  font-weight: 500;
 }
 .task-input::placeholder{
-  color: rgb(151, 151, 151);
+  color: rgb(157, 156, 156);
 }
 
 #add-task-btn{
@@ -39,4 +44,35 @@ body {
   color: white;
   font-size: 16px;
   margin-left: 15px;
+}
+
+.task-list-container{
+  margin-top: 30px;
+  width: 320px;
+  border-radius: 5px;
+  height: 100px;
+  background-color: white;
+
+}
+.task-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+.delete-icon-container{
+  background-color: #9d57d0;
+  padding: 5px 6px;
+  border-radius: 4px;
+}
+.delete-icon{
+  width: 20px;
+}
+hr {
+  width: 90%;
+  color: rgb(197, 194, 194);
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  margin: 0 auto;
+  margin-top: -15px;
 }
