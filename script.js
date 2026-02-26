@@ -8,7 +8,7 @@ let todoLists = [
   "Pay bills",
   "Clean the room",
 ];
-const todoNameList = document.querySelectorAll(".js-todo-name");
+
 const addButton = document.querySelector(".add-task-btn");
 
 addButton.addEventListener("click", () => {
@@ -18,12 +18,27 @@ addButton.addEventListener("click", () => {
   todoName.value = "";
 });
 
+const inputField = document.querySelector(".js-task-input");
+
+inputField.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    const todoName = document.querySelector(".js-task-input");
+    todoLists.push(todoName.value);
+    renderHtml();
+    todoName.value = "";
+  }
+});
+
+
 function handleDeleteBtn() {
   const deleteButton = document.querySelectorAll(".js-delete-icon-container");
   deleteButton.forEach((deletebtn) => {
     deletebtn.addEventListener("click", () => {
       const todoIndex = deletebtn.dataset["itemIndex"];
-      todoLists.splice(todoIndex, 1);
+      
+      throughEventListener();
+      todoLists.splice(objectList[todoIndex], 1);
+      console.log(objectList);
       renderHtml();
     });
   });
@@ -55,39 +70,51 @@ function renderHtml() {
 }
 
 function displayHtml() {
+  todoHTMLfinal = "";
   objectList.forEach((code, index) => {
     todoHTMLfinal += objectList[index].index;
   });
   document.querySelector(".js-task-list-container").innerHTML = todoHTMLfinal;
   handleDeleteBtn();
+  throughEventListener();
 }
 
-let newList = [];
 
-todoNameList.forEach((name) => {
-  name.addEventListener("click", () => {
-    newList = [];
-    objectList.forEach((obj) => {
-      const tempdiv = document.createElement("div");
-      tempdiv.innerHTML = obj.index;
-      const updateElement = tempdiv.querySelector(".task-name");
 
-      if (
-        tempdiv.querySelector(".task-name").innerText.trim() === name.innerText
-      ) {
-        updateElement.classList.add("completed-todo");
-      }
 
-      const objformat = {
-        index: tempdiv.innerHTML,
-        name: name.innerText,
-      };
-      newList.push(objformat);
+function throughEventListener() {
+  let newList = [];
+
+  const todoNameList = document.querySelectorAll(".js-todo-name");
+ // console.log(todoNameList);
+  todoNameList.forEach((name) => {
+    name.addEventListener("click", () => {
+      const clickedTodoName = name.innerText;
+      newList = [];
+      objectList.forEach((obj) => {
+        const tempdiv = document.createElement("div");
+        tempdiv.innerHTML = obj.index;
+        const updateElement = tempdiv.querySelector(".task-name");
+
+        if (
+          tempdiv.querySelector(".task-name").innerText.trim() ===
+          name.innerText
+        ) {
+          updateElement.classList.add("completed-todo");
+        }
+
+        const objformat = {
+          index: tempdiv.innerHTML,
+          name: name.innerText,
+        };
+        newList.push(objformat);
+      });
+
+      //console.log(newList);
+
+      objectList = newList;
+      todoHTMLfinal = "";
+      displayHtml();
     });
-    objectList = newList;
-    todoHTMLfinal = "";
-    displayHtml();
-
-    console.log(newList);
   });
-});
+}
