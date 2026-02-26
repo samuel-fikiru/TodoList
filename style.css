@@ -21,7 +21,7 @@ body {
   background-color: white;
   margin-top: 50px;
 
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
 
 }
 
@@ -41,6 +41,12 @@ body {
 }
 .task-input::placeholder{
   color: rgb(157, 156, 156);
+}
+
+.task-input:focus{
+  outline: none;
+  border-color: #9c54d0;
+  border-width: 2px;
 }
 
 .add-task-btn{
